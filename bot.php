@@ -1,6 +1,3 @@
-// <?php
-// echo "I am a bot";
-
 <?php
 $access_token = 'XXXXXXXXXXXXXXXXXXXXXXX';
 
