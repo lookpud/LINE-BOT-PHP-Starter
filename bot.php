@@ -27,7 +27,6 @@ if (!is_null($events['events'])) {
 			$replyToken = $event['replyToken'];
 
 			// Build message to reply back
-			if($text == 'Hi'){
 				$messages = [
 					{'type' => 'text',
 					'text' => $json//$text
@@ -36,12 +35,6 @@ if (!is_null($events['events'])) {
 					'text' => '^^'
 					}
 				];
-			} else {
-				$messages = [
-					'type' => 'text',
-					'text' => 'Say "Hi" to me'
-				];
-			}
 			
 
 			// Make a POST Request to Messaging API to reply to sender
