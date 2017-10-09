@@ -9,16 +9,10 @@ $content = file_get_contents('php://input');
 $events = json_decode($content, true);
 
 //
-$ch = curl_init();
-curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-curl_setopt($ch, CURLOPT_URL, 'http://localhost:1337/myApi/2');
-$result = curl_exec($ch);
-curl_close($ch);
-
-$obj = json_decode($result);
+ini_set("allow_url_fopen", 1);
+$json = file_get_contents('http://localhost:1337/myApi/2');
+$obj = json_decode($json);
 echo $obj->access_token;
-
 
 // Validate parsed JSON data
 if (!is_null($events['events'])) {
