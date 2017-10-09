@@ -28,7 +28,7 @@ if (!is_null($events['events'])) {
 			$url = 'https://api.line.me/v2/bot/message/reply';
 			$data = [
 				'replyToken' => $replyToken,
-				'messages' => .$events['events'][0]['source']['userId'],
+				'messages' => [$messages],// .$events['events'][0]['source']['userId']
 			];
 			$post = json_encode($data);
 			$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
