@@ -3,10 +3,10 @@
 $access_token = 'mp9W1fQUWXhFHXoIzL7fGy0sW55YeJX3w+2/q/L7zeQa4Ouk/xK1aUypnqo0lFg9hN5GyFN/v/HmDARGeep1o9Pm8kEzQ/h6JA8kxwFAxXUvmF7cEaPm9u6/pMdFWay5FEc35vYlxceDLvixuLzmSwdB04t89/1O/w1cDnyilFU=';
 
 // Get POST body content
-// $content = file_get_contents('php://input');
+$content = file_get_contents('php://input');
 
 // Parse JSON
-// $events = json_decode($content, true);
+$events = json_decode($content, true);
 
 //
 ini_set("allow_url_fopen", 1);
@@ -27,6 +27,7 @@ if (!is_null($events['events'])) {
 			$replyToken = $event['replyToken'];
 
 			// Build message to reply back
+			if($text == 'Hi'){
 				$messages = [
 					{'type' => 'text',
 					'text' => $json//$text
@@ -35,6 +36,13 @@ if (!is_null($events['events'])) {
 					'text' => '^^'
 					}
 				];
+			}else{
+				$messages = [
+					'type' => 'text',
+					'text' => 'Say "Hi" to me'
+				];
+			}
+				
 			
 
 			// Make a POST Request to Messaging API to reply to sender
