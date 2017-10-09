@@ -21,9 +21,6 @@ if (!is_null($events['events'])) {
 		// Reply only when message sent is in 'text' format
 		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
 			
-			
-			
-			
 			// Get text sent
 			$text = $event['message']['text'];
 			// Get replyToken
@@ -32,7 +29,7 @@ if (!is_null($events['events'])) {
 			// Build message to reply back
 			$messages = [
 				'type' => 'text',
-				'text' => $event['source']['userId']//$text
+				'text' => $json//$text
 			];
 
 			// Make a POST Request to Messaging API to reply to sender
