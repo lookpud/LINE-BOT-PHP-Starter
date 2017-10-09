@@ -9,7 +9,7 @@ $content = file_get_contents('php://input');
 $events = json_decode($content, true);
 
 //
-$testapi = json_decode('http://localhost:1337/myApi', true);
+$testapi = json_decode('http://localhost:1337/myApi/2', true);
 echo $testapi;
 
 // Validate parsed JSON data
