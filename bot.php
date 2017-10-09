@@ -12,7 +12,7 @@ $access_token = 'mp9W1fQUWXhFHXoIzL7fGy0sW55YeJX3w+2/q/L7zeQa4Ouk/xK1aUypnqo0lFg
 ini_set("allow_url_fopen", 1);
 $json = file_get_contents('http://localhost:1337/myApi/2');
 $obj = json_decode($json);
-echo $obj; echo $json;
+echo $obj;
 
 // Validate parsed JSON data
 if (!is_null($events['events'])) {
