@@ -36,3 +36,4 @@ $access_token = 'mp9W1fQUWXhFHXoIzL7fGy0sW55YeJX3w+2/q/L7zeQa4Ouk/xK1aUypnqo0lFg
 			echo $result . "\r\n";
 	
 echo "OK2";
+?>
