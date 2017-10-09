@@ -11,8 +11,8 @@ $events = json_decode($content, true);
 //
 ini_set("allow_url_fopen", 1);
 $json = file_get_contents('http://139.59.247.234:1337/myApi/17');
-// $obj = json_decode($json, true);
-echo $json . "\n";
+$obj = json_decode($json, true);
+echo [$json] . "\n";
 
 // Validate parsed JSON data
 if (!is_null($events['events'])) {
@@ -32,7 +32,7 @@ if (!is_null($events['events'])) {
 					'text' => $json//$text
 					],
 					['type' => 'text',
-					'text' => $json//$text
+					'text' => $text
 					]
 				];
 				
