@@ -11,7 +11,7 @@ $events = json_decode($content, true);
 //
 $json = file_get_contents('http://localhost:1337/myApi/2');
 $obj = json_decode($json);
-echo $obj->access_token;
+echo $obj;
 
 
 // Validate parsed JSON data
@@ -58,5 +58,5 @@ if (!is_null($events['events'])) {
 		}
 	}
 }
-echo "OK1";
+echo "OK2";
 
