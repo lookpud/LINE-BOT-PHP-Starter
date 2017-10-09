@@ -9,7 +9,7 @@ $content = file_get_contents('php://input');
 $events = json_decode($content, true);
 
 //
-$json = file_get_contents('http://localhost:1337/myApi/2');
+$json = file_get_contents('http://192.168.1.41:1337/myApi/2');
 $obj = json_decode($json);
 echo $obj->access_token;
 
@@ -58,5 +58,5 @@ if (!is_null($events['events'])) {
 		}
 	}
 }
-echo "OK2";
+echo "OK1";
 
