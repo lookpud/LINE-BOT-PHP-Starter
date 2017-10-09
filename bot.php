@@ -11,6 +11,7 @@ $events = json_decode($content, true);
 //
 $testapi = json_decode('http://localhost:1337/myApi/2', true);
 echo $testapi;
+echo '<script>console.log($testapi)</script>';
 
 // Validate parsed JSON data
 if (!is_null($events['events'])) {
