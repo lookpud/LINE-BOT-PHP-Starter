@@ -23,7 +23,6 @@ if (!is_null($events['events'])) {
 			
 			// Get text sent
 			$text = $event['message']['text'];
-			echo $text;
 			// Get replyToken
 			$replyToken = $event['replyToken'];
 
