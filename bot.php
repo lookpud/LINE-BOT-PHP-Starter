@@ -27,10 +27,22 @@ if (!is_null($events['events'])) {
 			$replyToken = $event['replyToken'];
 
 			// Build message to reply back
-			$messages = [
-				'type' => 'text',
-				'text' => $json//$text
-			];
+			if($text == 'Hi'){
+				$messages = [
+					{'type' => 'text',
+					'text' => $json//$text
+					},
+					{'type' => 'text',
+					'text' => '^^'
+					}
+				];
+			} else {
+				$messages = [
+					'type' => 'text',
+					'text' => 'Say 'Hi' to me'
+				];
+			}
+			
 
 			// Make a POST Request to Messaging API to reply to sender
 			$url = 'https://api.line.me/v2/bot/message/reply';
