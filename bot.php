@@ -9,6 +9,7 @@ $content = file_get_contents('php://input');
 $events = json_decode($content, true);
 
 //
+ini_set("allow_url_fopen", 1);
 $json = file_get_contents('192.168.1.41:1337/myApi/2');
 $obj = json_decode($json);
 echo $obj->access_token;
@@ -58,5 +59,5 @@ if (!is_null($events['events'])) {
 		}
 	}
 }
-echo "OK1";
+echo "OK2";
 
