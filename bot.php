@@ -8,16 +8,16 @@ $content = file_get_contents('php://input');
 // Parse JSON
 $events = json_decode($content, true);
 // Validate parsed JSON data
-if (!is_null($events['events'])) {
-	// Loop through each event
-	foreach ($events['events'] as $event) {
-		// Reply only when message sent is in 'text' format
-		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
-			// Get text sent
-			$text = $event['message']['text'];
-			echo '<script>console.log($text)</script>';
+// if (!is_null($events['events'])) {
+// 	// Loop through each event
+// 	foreach ($events['events'] as $event) {
+// 		// Reply only when message sent is in 'text' format
+// 		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
+// 			// Get text sent
+// 			$text = $event['message']['text'];
+// 			echo '<script>console.log($text)</script>';
 			// Get replyToken
-			$replyToken = $event['replyToken'];
+// 			$replyToken = $event['replyToken'];
 			$userid = 'U5c95645df3a889a8a270bd48e8a803c5';
 			// Build message to reply back
 			$messages = [
@@ -50,7 +50,5 @@ if (!is_null($events['events'])) {
 			curl_close($ch);
 
 			echo $result . "\r\n";
-		}
-	}
-}
+	
 echo "OK2";
