@@ -28,9 +28,12 @@ if (!is_null($events['events'])) {
 
 			// Build message to reply back
 				$messages = [
-					{'type' => 'text',
+					['type' => 'text',
 					'text' => $json//$text
-					}
+					],
+					['type' => 'text',
+					'text' => $json//$text
+					]
 				];
 				
 			
