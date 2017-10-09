@@ -32,7 +32,6 @@ if (!is_null($events['events'])) {
 			
 			// Get text sent
 			$text = $event['message']['text'];
-			echo '<script>console.log($text)</script>';
 			// Get replyToken
 			$replyToken = $event['replyToken'];
 
