@@ -9,9 +9,14 @@ $content = file_get_contents('php://input');
 $events = json_decode($content, true);
 
 //
-ini_set("allow_url_fopen", 1);
-$json = file_get_contents('192.168.1.41:1337/myApi/2');
-$obj = json_decode($json);
+$ch = curl_init();
+curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($ch, CURLOPT_URL, 'http://localhost:1337/myApi/2');
+$result = curl_exec($ch);
+curl_close($ch);
+
+$obj = json_decode($result);
 echo $obj->access_token;
 
 
@@ -59,5 +64,5 @@ if (!is_null($events['events'])) {
 		}
 	}
 }
-echo "OK2";
+echo "OK1";
 
