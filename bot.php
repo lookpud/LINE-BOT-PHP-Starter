@@ -48,19 +48,4 @@ if (!is_null($events['events'])) {
 }
 echo "OK";
 	
-// curl -X POST \
-// -H 'Content-Type:application/json' \
-// -H 'Authorization: Bearer {mp9W1fQUWXhFHXoIzL7fGy0sW55YeJX3w+2/q/L7zeQa4Ouk/xK1aUypnqo0lFg9hN5GyFN/v/HmDARGeep1o9Pm8kEzQ/h6JA8kxwFAxXUvmF7cEaPm9u6/pMdFWay5FEc35vYlxceDLvixuLzmSwdB04t89/1O/w1cDnyilFU=}' \
-// -d '{
-//     "to": ["xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"],
-//     "messages":[
-//         {
-//             "type":"text",
-//             "text":"Hello, Test1"
-//         },
-//         {
-//             "type":"text",
-//             "text":"Hello, Test2"
-//         }
-//     ]
-// }' https://api.line.me/v2/bot/message/push
+
