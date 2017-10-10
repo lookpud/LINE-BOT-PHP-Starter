@@ -34,8 +34,14 @@ if (!is_null($events['events'])) {
 				];
 			}else{
 				$messages = [
-					'type' => 'text',
-					'text' => 'Say "Hi" to me'				 
+					{
+               "type":"text",
+               "text":"Hello, user"
+          },
+          {
+               "type":"text",
+               "text":"May I help you?"
+          }				 
 				];
 			}
 				
@@ -64,5 +70,5 @@ if (!is_null($events['events'])) {
 		}
 	}
 }
-echo "OK1";
+echo "OK2";
 
