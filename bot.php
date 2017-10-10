@@ -20,7 +20,7 @@ echo [$json] . "\n";
 			
 				$messages = [
 					'type' => 'text',
-					'text' => $json//$text				 
+					'text' => 'Yo'//$text				 
 				];
 
 			// Make a POST Request to Messaging API to reply to sender
@@ -43,5 +43,5 @@ echo [$json] . "\n";
 
 			echo 'result' . $result . "\r\n";
 		
-echo "OK1";
+echo "OK2";
 
