@@ -15,29 +15,38 @@ $obj = json_decode($json, true);
 echo [$json] . "\n";
 
 // Validate parsed JSON data
+if (!is_null($events['events'])) {
+	// Loop through each event
+	foreach ($events['events'] as $event) {
+		// Reply only when message sent is in 'text' format
+		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
+			
+			// Get text sent
+			$text = $event['message']['text'];
+			// Get replyToken
+			$replyToken = $event['replyToken'];
 
 			// Build message to reply back
-			
-// 				$messages = [
-// 					'type' => 'text',
-// 					'text' => 'Yo'//$text				 
-// 				];
-			$messages :{
-          			{
-               				"type":"text",
-               				"text":"Hello, user"
-          			},
-         			{
-               				"type":"text",
-               				"text":"Are you Hungry?"
-          			}
+			if($text == 'Hi'){
+				$messages = [
+					'type' => 'text',
+					'text' => $event['source']['userId']//$json//$text				 
+				];
+			}else{
+				$messages = [
+						'type' : 'text',
+						'text' : 'Say "Hi" to me' 
+				];
 			}
+				
+				
+			
 
 			// Make a POST Request to Messaging API to reply to sender
-			$url = 'https://api.line.me/v2/bot/message/push';
+			$url = 'https://api.line.me/v2/bot/message/reply';
 			$data = [
-				'to' => 'U5c95645df3a889a8a270bd48e8a803c5',
-				'messages' => $messages,
+				'replyToken' => $replyToken,
+				'messages' => [$messages],
 			];
 			$post = json_encode($data);
 			$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
@@ -51,7 +60,9 @@ echo [$json] . "\n";
 			$result = curl_exec($ch);
 			curl_close($ch);
 
-			echo 'result' . $result . "\r\n";
-		
-echo "OK1";
+			echo $result . "\r\n";
+		}
+	}
+}
+echo "OK2";
 
