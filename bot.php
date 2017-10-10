@@ -29,8 +29,9 @@ if (!is_null($events['events'])) {
 			// Build message to reply back
 			if($text == 'Hi'){
 				$messages = [
-					'type' => 'text',
-					'text' => $event['source']['userId']//$json//$text				 
+					'type' => 'sticker',
+					'packageId' => '1',
+    					'stickerId' => '1'//$json//$text				 
 				];
 			}else{
 				$messages = [
