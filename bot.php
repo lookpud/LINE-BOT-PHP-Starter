@@ -18,10 +18,20 @@ echo [$json] . "\n";
 
 			// Build message to reply back
 			
-				$messages = [
-					'type' => 'text',
-					'text' => 'Yo'//$text				 
-				];
+// 				$messages = [
+// 					'type' => 'text',
+// 					'text' => 'Yo'//$text				 
+// 				];
+			$messages :[
+          			{
+               				"type":"text",
+               				"text":"Hello, user"
+          			},
+         			{
+               				"type":"text",
+               				"text":"Are you Hungry?"
+          			}
+      			]
 
 			// Make a POST Request to Messaging API to reply to sender
 			$url = 'https://api.line.me/v2/bot/message/push';
@@ -43,5 +53,5 @@ echo [$json] . "\n";
 
 			echo 'result' . $result . "\r\n";
 		
-echo "OK2";
+echo "OK1";
 
