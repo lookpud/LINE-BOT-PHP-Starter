@@ -25,15 +25,21 @@ if (!is_null($events['events'])) {
 			$text = $event['message']['text'];
 			// Get replyToken
 			$replyToken = $event['replyToken'];
-
+			
+			$sticker = [
+				'type' => 'sticker',
+				'packageId' => '1',
+    				'stickerId' => '1'
+			];
+			$reply = [
+				'type' => 'text',
+				'text' => 'zzZZ'
+			];
 			// Build message to reply back
 			if($text == 'Hi'){
 				$messages = [
-					['type' => 'sticker',
-					'packageId' => '1',
-    					'stickerId' => '1'],
-					 ['type' => 'text',
-					'text' => 'zzZZ']
+					$sticker,
+					 $reply
 				];
 			}else{
 				$messages = [
