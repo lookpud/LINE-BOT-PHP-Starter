@@ -14,6 +14,22 @@ $json = file_get_contents('http://139.59.247.234:1337/myApi/17');
 $obj = json_decode($json, true);
 echo [$json] . "\n";
 
+// try
+
+			$sticker = [
+				'type' => 'sticker',
+				'packageId' => '1',
+    				'stickerId' => '1'
+			];
+			$reply = [
+				'type' => 'text',
+				'text' => 'zzZZ'
+			];
+			$messages = [
+					$sticker,
+					 $reply
+				];
+			echo 'mes ' . $messages;
 // Validate parsed JSON data
 if (!is_null($events['events'])) {
 	// Loop through each event
@@ -74,5 +90,5 @@ if (!is_null($events['events'])) {
 		}
 	}
 }
-echo "OK2";
+echo "OK1";
 
