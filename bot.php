@@ -33,7 +33,7 @@ if (!is_null($events['events'])) {
 					'packageId' => '1',
     					'stickerId' => '1'],//$json//$text
 					 ['type' => 'text',
-					'text' => 'zzZZ',
+					'text' => 'zzZZ']
 				];
 			}else{
 				$messages = [
