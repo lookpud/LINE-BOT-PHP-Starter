@@ -29,7 +29,7 @@ echo [$json] . "\n";
 					$sticker,
 					 $reply
 				];
-			echo 'mes ' . $messages;
+			echo 'mes ' . [$messages];
 // Validate parsed JSON data
 if (!is_null($events['events'])) {
 	// Loop through each event
@@ -90,5 +90,5 @@ if (!is_null($events['events'])) {
 		}
 	}
 }
-echo "OK1";
+echo "OK12";
 
