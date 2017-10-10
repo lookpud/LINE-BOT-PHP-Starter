@@ -35,13 +35,13 @@ if (!is_null($events['events'])) {
 			}else{
 				$messages = [
 					{
-               "type":"text",
-               "text":"Hello, user"
-          },
-          {
-               "type":"text",
-               "text":"May I help you?"
-          }				 
+						'type' => 'text',
+						'text' => $json//$text 
+					},
+					{
+						'type' => 'text',
+						'text' => $json//$text 
+					}
 				];
 			}
 				
