@@ -33,7 +33,7 @@ if (!is_null($events['events'])) {
 					'text' => $json//$text				 
 				];
 			}else{
-				$messages = [
+				$messages : [
 					{
 						'type' : 'text',
 						'text' : $json//$text 
