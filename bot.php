@@ -29,10 +29,10 @@ echo [$json] . "\n";
 					$sticker,
 					 $reply
 				];
-			foreach($array as $key => $value){
-  				echo $key." has the value". $value;
-				foreach($array as $key => $value){
-  					echo $key." has the value". $value;
+			foreach($messages as $key => $value){
+  				echo $key . '<br />';
+				foreach($value as $key_arr => $value_arr){
+  					echo $key_arr . ': ' . implode('-', $values_arr) . '<br /><br />';
 				}
 			}
 // Validate parsed JSON data
@@ -95,5 +95,5 @@ if (!is_null($events['events'])) {
 		}
 	}
 }
-echo "OK2";
+echo "OK1";
 
