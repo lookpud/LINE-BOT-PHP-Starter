@@ -27,14 +27,18 @@ if (!is_null($events['events'])) {
 			$replyToken = $event['replyToken'];
 
 			// Build message to reply back
+			if($text == 'Hi'){
 				$messages = [
-					['type' => 'text',
-					'text' => $json//$text
-					],
-					['type' => 'text',
-					'text' => $text
-					]
+					'type' => 'text',
+					'text' => $json//$text				 
 				];
+			}else{
+				$messages = [
+					'type' => 'text',
+					'text' => $text				 
+				];
+			}
+				
 				
 			
 
