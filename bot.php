@@ -22,7 +22,7 @@ echo [$json] . "\n";
 // 					'type' => 'text',
 // 					'text' => 'Yo'//$text				 
 // 				];
-			$messages :[
+			$messages :{
           			{
                				"type":"text",
                				"text":"Hello, user"
@@ -31,13 +31,13 @@ echo [$json] . "\n";
                				"type":"text",
                				"text":"Are you Hungry?"
           			}
-      			]
+			}
 
 			// Make a POST Request to Messaging API to reply to sender
 			$url = 'https://api.line.me/v2/bot/message/push';
 			$data = [
 				'to' => 'U5c95645df3a889a8a270bd48e8a803c5',
-				'messages' => [$messages],
+				'messages' => $messages,
 			];
 			$post = json_encode($data);
 			$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
