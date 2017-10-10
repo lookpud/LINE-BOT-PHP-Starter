@@ -15,43 +15,18 @@ $obj = json_decode($json, true);
 echo [$json] . "\n";
 
 // Validate parsed JSON data
-if (!is_null($events['events'])) {
-	// Loop through each event
-	foreach ($events['events'] as $event) {
-		// Reply only when message sent is in 'text' format
-		if ($event['type'] == 'message' && $event['message']['type'] == 'text') {
-			
-			// Get text sent
-			$text = $event['message']['text'];
-			// Get replyToken
-			$replyToken = $event['replyToken'];
 
 			// Build message to reply back
-			if($text == 'Hi'){
+			
 				$messages = [
 					'type' => 'text',
 					'text' => $json//$text				 
 				];
-			}else{
-				$messages = [
-					{
-						'type' : 'text',
-						'text' : $json//$text 
-					},
-					{
-						'type' : 'text',
-						'text' : 'Hi'
-					}
-				];
-			}
-				
-				
-			
 
 			// Make a POST Request to Messaging API to reply to sender
-			$url = 'https://api.line.me/v2/bot/message/reply';
+			$url = 'https://api.line.me/v2/bot/message/push';
 			$data = [
-				'replyToken' => $replyToken,
+				'to' => 'U5c95645df3a889a8a270bd48e8a803c5',
 				'messages' => [$messages],
 			];
 			$post = json_encode($data);
@@ -67,8 +42,6 @@ if (!is_null($events['events'])) {
 			curl_close($ch);
 
 			echo $result . "\r\n";
-		}
-	}
-}
+		
 echo "OK2";
 
