@@ -31,7 +31,7 @@ if (!is_null($events['events'])) {
 				$messages = [
 					['type' => 'sticker',
 					'packageId' => '1',
-    					'stickerId' => '1'],//$json//$text
+    					'stickerId' => '1'],
 					 ['type' => 'text',
 					'text' => 'zzZZ']
 				];
