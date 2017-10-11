@@ -59,8 +59,8 @@ if (!is_null($events['events'])) {
 			// Build message to reply back
 			if($text == 'Hi'){
 				$messages = [
-					$sticker,
-					 $reply
+					'sticker' => $sticker,
+					'reply' => $reply
 				];
 			}else{
 				$messages = [
@@ -95,5 +95,5 @@ if (!is_null($events['events'])) {
 		}
 	}
 }
-echo "OK1";
+echo "OK/";
 
