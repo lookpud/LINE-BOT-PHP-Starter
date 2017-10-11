@@ -91,6 +91,15 @@ function msgPush(){
 	echo [$json] . "\n";
 	
 	// Build message to reply back
+	$sticker = [
+		'type' => 'sticker',
+		'packageId' => '1',
+    		'stickerId' => '1'
+	];
+	$reply = [
+		'type' => 'text',
+		'text' => 'zzZZ'
+	];
 	$messages = [
 		'sticker' => $sticker,
 		'reply' => $reply
@@ -116,7 +125,7 @@ function msgPush(){
 	curl_close($ch);
 
 	echo result . $result . "\r\n";
-	echo "OK1";
+	echo "OK2";
 }
 
 
