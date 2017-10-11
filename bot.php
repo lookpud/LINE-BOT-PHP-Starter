@@ -87,8 +87,8 @@ function msgPush(){
 	//
 	ini_set("allow_url_fopen", 1);
 	$json = file_get_contents('http://139.59.247.234:1337/myApi/17');
-	$obj = json_decode($json, true);
-	echo $obj[0]->Title . "\n";
+	$obj = json_decode($json);
+	echo $obj[0]->Title_TH . "\n";
 // 	foreach($json as $key => $value){
 //   		echo 'value' . $value . '<br />';
 // 	}
@@ -133,7 +133,7 @@ function msgPush(){
 	curl_close($ch);
 
 	echo 'result: ' . $result . "\r\n";
-	echo "OK1";
+	echo "OK2";
 }
 
 
