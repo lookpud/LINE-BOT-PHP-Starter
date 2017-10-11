@@ -97,8 +97,11 @@ function msgPush(){
     		'stickerId' => '1'
 	];
 	$messages = [
-		'type' => 'text',
+		'type' => 'type',
 		'text' => 'zzZZ'
+	];
+	$ar = [
+    		['type' => 'type','text' => 'zzZZ']
 	];
 // 	$messages = [
 // 		'sticker' => $sticker,
@@ -111,7 +114,7 @@ function msgPush(){
 	$url = 'https://api.line.me/v2/bot/message/push';
 	$data = [
 		'to' => 'Ua7085916d72ba072759cfa5fe05ac3b8',
-		'messages' => [$messages],
+		'messages' => [$ar],
 	];
 	echo 'data: ' . $data . "\n";
 	$post = json_encode($data);
@@ -127,7 +130,7 @@ function msgPush(){
 	curl_close($ch);
 
 	echo 'result: ' . $result . "\r\n";
-	echo "OK2";
+	echo "OK1";
 }
 
 
