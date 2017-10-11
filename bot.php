@@ -101,8 +101,7 @@ function msgPush(){
 		'text' => 'zzZZ'
 	];
 	$ar = [
-    		['type' => 'text','text' => 'zzZZ1'],
-		['type' => 'sticker','packageId' => '1','stickerId' => '1']
+    		['type' => 'text','text' => 'zzZZ1']
 	];
 // 	$messages = [
 // 		'sticker' => $sticker,
@@ -131,7 +130,7 @@ function msgPush(){
 	curl_close($ch);
 
 	echo 'result: ' . $result . "\r\n";
-	echo "OK2";
+	echo "OK1";
 }
 
 
