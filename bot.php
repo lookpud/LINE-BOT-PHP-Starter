@@ -77,7 +77,7 @@ if (!is_null($events['events'])) {
 			foreach($messages as $key=>$value){	
 			$data = [
 				'replyToken' => $replyToken,
-				'messages' => [$messages],
+				'messages' => [$value],
 			];
 			echo $data;
 			$post = json_encode($data);
@@ -97,5 +97,5 @@ if (!is_null($events['events'])) {
 		}
 	}
 }
-echo "OK1";
+echo "OK3";
 
