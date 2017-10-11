@@ -88,7 +88,7 @@ function msgPush(){
 	ini_set("allow_url_fopen", 1);
 	$json = file_get_contents('http://139.59.247.234:1337/myApi/17');
 	$obj = json_decode($json, true);
-	echo $json . "\n";
+	echo [$json] . "\n";
 	
 	// Build message to reply back
 	$sticker = [
@@ -96,7 +96,7 @@ function msgPush(){
 		'packageId' => '1',
     		'stickerId' => '1'
 	];
-	$reply = [
+	$messages = [
 		'type' => 'text',
 		'text' => 'zzZZ'
 	];
@@ -104,8 +104,8 @@ function msgPush(){
 // 		'sticker' => $sticker,
 // 		'reply' => $reply
 // 	];
-	$messages = [$reply];
-	echo 'msg: ' . [$messages] . '\n';
+	echo 'msg: ' . [$messages] . "\n";
+	print 'msg: ' . [$messages] . "\n";
 			
 	// Make a POST Request to Messaging API to reply to sender
 	$url = 'https://api.line.me/v2/bot/message/push';
@@ -127,7 +127,7 @@ function msgPush(){
 	curl_close($ch);
 
 	echo 'result: ' . $result . "\r\n";
-	echo "OK1";
+	echo "OK2";
 }
 
 
