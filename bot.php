@@ -88,7 +88,7 @@ function msgPush(){
 	ini_set("allow_url_fopen", 1);
 	$json = file_get_contents('http://139.59.247.234:1337/myApi/17');
 	$obj = json_decode($json);
-	echo $obj[0]->Title_TH . "\n";
+	echo $obj[0]->Title . "\n";
 // 	foreach($json as $key => $value){
 //   		echo 'value' . $value . '<br />';
 // 	}
@@ -101,7 +101,7 @@ function msgPush(){
 	];
 	$messages = [
 		'type' => 'text',
-		'text' => 'zzZZ'
+		'text' => $obj[0]->Title
 	];
 // 	$ar = [
 //     		['type' => 'text','text' => 'zzZZ1']
