@@ -104,8 +104,8 @@ function msgPush(){
 		'type' => 'text',
 		'text' => $obj[0]->Title
 	];
-	$arr = [$sticker];
-	$arr = [$messages];
+	$arr[] = $sticker;
+	$arr[] = $messages;
 // 	$messages = [
 // 		'sticker' => $sticker,
 // 		'reply' => $reply
@@ -133,7 +133,7 @@ function msgPush(){
 	curl_close($ch);
 
 	echo 'result: ' . $result . "\r\n";
-	echo "OK1";
+	echo "OK2";
 }
 
 
