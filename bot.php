@@ -109,6 +109,7 @@ function msgPush(){
 		'type' => 'text',
 		'text' => 'Yo!'//$obj[0]->Title
 	];
+	// PGMJL
 	$arr[] = $messages;
 	$arr[] = $sticker;
 	$arr[] = $sticker2;
