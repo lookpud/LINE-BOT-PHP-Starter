@@ -110,9 +110,14 @@ function msgPush(){
 		'text' => 'Yo!'//$obj[0]->Title
 	];
 	// PGMJL
-	$arr[] = $messages;
-	$arr[] = $sticker;
-	$arr[] = $sticker2;
+	$arr[] = ['type' => 'text',
+		'text' => 'Yo!'];
+	$arr[] = ['type' => 'sticker',
+		'packageId' => '1',
+    		'stickerId' => '1'];
+	$arr[] = ['type' => 'sticker',
+		'packageId' => '2',
+    		'stickerId' => '520'];
 	foreach($arr as $key => $value){
   		echo 'value' . $value . '<br />';
 	}
