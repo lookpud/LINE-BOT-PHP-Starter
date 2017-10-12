@@ -1,6 +1,6 @@
 <?php
 
-// msgPush();
+msgPush();
 
 
 function msgReply(){
