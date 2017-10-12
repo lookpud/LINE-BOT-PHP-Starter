@@ -104,11 +104,11 @@ function msgPush(){
 		'type' => 'text',
 		'text' => $obj[0]->Title
 	];
-	$arr[] = ['type' => 'sticker',
+	$arr[] = 'type' => 'sticker',
 		'packageId' => '1',
-    		'stickerId' => '1'];
-	$arr[] = ['type' => 'text',
-		'text' => $obj[0]->Title];
+    		'stickerId' => '1';
+	$arr[] = 'type' => 'text',
+		'text' => $obj[0]->Title;
 	foreach($arr as $key => $value){
   		echo 'value' . $value . '<br />';
 	}
@@ -139,7 +139,7 @@ function msgPush(){
 	curl_close($ch);
 
 	echo 'result: ' . $result . "\r\n";
-	echo "OK1";
+	echo "OK2";
 }
 
 
