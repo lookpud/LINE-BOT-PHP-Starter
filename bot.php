@@ -104,11 +104,8 @@ function msgPush(){
 		'type' => 'text',
 		'text' => $obj[0]->Title
 	];
-	$arr[] = {'type' => 'sticker',
-		'packageId' => '1',
-    		'stickerId' => '1'};
-	$arr[] = {'type' => 'text',
-		'text' => $obj[0]->Title};
+	$arr[] = $sticker;
+	$arr[] = $messages;
 	foreach($arr as $key => $value){
   		echo 'value' . $value . '<br />';
 	}
@@ -123,7 +120,7 @@ function msgPush(){
 	$url = 'https://api.line.me/v2/bot/message/push';
 	$data = [
 		'to' => 'Ua7085916d72ba072759cfa5fe05ac3b8',
-		'messages' => [$arr],
+		'messages' => $arr,
 	];
 	echo 'data: ' . $data . "\n";
 	$post = json_encode($data);
@@ -141,24 +138,6 @@ function msgPush(){
 	echo 'result: ' . $result . "\r\n";
 	echo "OK2";
 }
-
-echo 'ok1';
-curl -X POST \
--H 'Content-Type:application/json' \
--H 'Authorization: Bearer {mp9W1fQUWXhFHXoIzL7fGy0sW55YeJX3w+2/q/L7zeQa4Ouk/xK1aUypnqo0lFg9hN5GyFN/v/HmDARGeep1o9Pm8kEzQ/h6JA8kxwFAxXUvmF7cEaPm9u6/pMdFWay5FEc35vYlxceDLvixuLzmSwdB04t89/1O/w1cDnyilFU=}' \
--d '{
-    "to": "Ua7085916d72ba072759cfa5fe05ac3b8",
-    "messages":[
-        {
-            "type":"text",
-            "text":"Hello, world1"
-        },
-        {
-            "type":"text",
-            "text":"Hello, world2"
-        }
-    ]
-}' https://api.line.me/v2/bot/message/push
 
 
 
