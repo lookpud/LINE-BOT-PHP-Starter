@@ -109,6 +109,9 @@ function msgPush(){
     		'stickerId' => '1'];
 	$arr[] = ['type' => 'text',
 		'text' => $obj[0]->Title];
+	foreach($arr as $key => $value){
+  		echo 'value' . $value . '<br />';
+	}
 // 	$messages = [
 // 		'sticker' => $sticker,
 // 		'reply' => $reply
@@ -119,7 +122,7 @@ function msgPush(){
 	// Make a POST Request to Messaging API to reply to sender
 	$url = 'https://api.line.me/v2/bot/message/push';
 	$data = [
-		'to' => 'U5c95645df3a889a8a270bd48e8a803c5',
+		'to' => 'Ua7085916d72ba072759cfa5fe05ac3b8',
 		'messages' => $arr,
 	];
 	echo 'data: ' . $data . "\n";
