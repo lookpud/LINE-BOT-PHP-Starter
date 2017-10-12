@@ -84,7 +84,7 @@ echo "OK2";
 function msgPush(){
 	$access_token = 'mp9W1fQUWXhFHXoIzL7fGy0sW55YeJX3w+2/q/L7zeQa4Ouk/xK1aUypnqo0lFg9hN5GyFN/v/HmDARGeep1o9Pm8kEzQ/h6JA8kxwFAxXUvmF7cEaPm9u6/pMdFWay5FEc35vYlxceDLvixuLzmSwdB04t89/1O/w1cDnyilFU=';
 	
-	//
+	// get data from API
 	ini_set("allow_url_fopen", 1);
 	$json = file_get_contents('http://139.59.247.234:1337/myApi/17');
 	$obj = json_decode($json);
@@ -94,6 +94,7 @@ function msgPush(){
 // 	}
 	
 	// Build message to reply back
+	$arr = [];
 	$sticker = [
 		'type' => 'sticker',
 		'packageId' => '1',
@@ -103,9 +104,8 @@ function msgPush(){
 		'type' => 'text',
 		'text' => $obj[0]->Title
 	];
-// 	$ar = [
-//     		['type' => 'text','text' => 'zzZZ1']
-// 	];
+	$arr = [$sticker];
+	$arr = [$messages];
 // 	$messages = [
 // 		'sticker' => $sticker,
 // 		'reply' => $reply
@@ -116,8 +116,8 @@ function msgPush(){
 	// Make a POST Request to Messaging API to reply to sender
 	$url = 'https://api.line.me/v2/bot/message/push';
 	$data = [
-		'to' => 'Ua7085916d72ba072759cfa5fe05ac3b8',
-		'messages' => [$messages],
+		'to' => 'U5c95645df3a889a8a270bd48e8a803c5',
+		'messages' => $arr,
 	];
 	echo 'data: ' . $data . "\n";
 	$post = json_encode($data);
@@ -133,7 +133,7 @@ function msgPush(){
 	curl_close($ch);
 
 	echo 'result: ' . $result . "\r\n";
-	echo "OK2";
+	echo "OK1";
 }
 
 
