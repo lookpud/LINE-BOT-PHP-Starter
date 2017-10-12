@@ -100,12 +100,18 @@ function msgPush(){
 		'packageId' => '1',
     		'stickerId' => '1'
 	];
+	$sticker2 = [
+		'type' => 'sticker',
+		'packageId' => '2',
+    		'stickerId' => '520'
+	];
 	$messages = [
 		'type' => 'text',
-		'text' => $obj[0]->Title
+		'text' => 'Yo!'//$obj[0]->Title
 	];
-	$arr[] = $sticker;
 	$arr[] = $messages;
+	$arr[] = $sticker;
+	$arr[] = $sticker2;
 	foreach($arr as $key => $value){
   		echo 'value' . $value . '<br />';
 	}
