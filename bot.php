@@ -45,7 +45,7 @@ if (!is_null($events['events'])) {
 			];
 			$reply = [
 				'type' => 'text',
-				'text' => $obj[0]->Name
+				'text' => $obj->Name
 			];
 			// Build message to reply back
 			if($text == 'Hi'){
