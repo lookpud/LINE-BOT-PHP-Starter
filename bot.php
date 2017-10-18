@@ -31,7 +31,7 @@ if (!is_null($events['events'])) {
 			$text = $event['message']['text'];
 			// get data from API
 			ini_set("allow_url_fopen", 1);
-			$json = file_get_contents('http://139.59.247.234:1337/myApi/'.$text);
+			$json = file_get_contents('http://139.59.247.234:1337/myApiIn/'.$text);
 			$obj = json_decode($json);
 			
 				
