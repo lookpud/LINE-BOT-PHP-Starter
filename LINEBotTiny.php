@@ -204,13 +204,13 @@ class LINEBotTiny
         //     ),
         // ));
         $push_msg = [
-		"type : sticker",
-		"packageId : 2",
-    		"stickerId : 145"
+		'type' => 'sticker',
+		'packageId' => '2',
+    		'stickerId' => '145'
 	];
         $message = [
-		 "to : U5c95645df3a889a8a270bd48e8a803c5",
-		 "messages : $push_msg",
+		 'to' => ['U5c95645df3a889a8a270bd48e8a803c5', 'Ua7085916d72ba072759cfa5fe05ac3b8'],
+		 'messages' => [$push_msg]
 	];
 
         $authHeaders = [
