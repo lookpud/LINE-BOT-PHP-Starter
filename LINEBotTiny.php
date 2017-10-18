@@ -237,36 +237,8 @@ class LINEBotTiny
         }
         $curl->setoptArray($options);
         $result = $curl->exec();
-        
+        return $result;
 
-        if ($curl->errno()) {
-            error_log(json_encode($curl->error()));
-        }
-        $info = $curl->getinfo();
-        $httpStatus = $info['http_code'];
-        $responseHeaderSize = $info['header_size'];
-        $responseHeaderStr = substr($result, 0, $responseHeaderSize);
-        $responseHeaders = [];
-        foreach (explode("\r\n", $responseHeaderStr) as $responseHeader) {
-            $kv = explode(':', $responseHeader, 2);
-            if (count($kv) === 2) {
-                $responseHeaders[$kv[0]] = trim($kv[1]);
-            }
-        }
-        $body = substr($result, $responseHeaderSize);
-        error_log('['.date("F j, Y, g:i a e O").']', 3, "/var/tmp/push-errors.log");
-        error_log(json_encode($httpStatus), 3, "/var/tmp/push-errors.log");
-        error_log("\n ", 3, "/var/tmp/push-errors.log");
-        return $body;
-        // $response = file_get_contents('https://api.line.me/v2/bot/message/push', false, $context);
-        // if (strpos($http_response_header[0], '200') === false) {
-        //     http_response_code(500);
-
-        //    // error_log("Request message push: " . json_encode($message));
-        // }
-        // else{
-        // error_log("Response message push: " . $response);
-        // }
     }
     //
 
