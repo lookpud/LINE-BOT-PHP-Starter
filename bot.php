@@ -29,6 +29,12 @@ if (!is_null($events['events'])) {
 			echo 'message ja';
 			// Get text sent
 			$text = $event['message']['text'];
+			// get data from API
+			ini_set("allow_url_fopen", 1);
+			$json = file_get_contents('http://139.59.247.234:1337/myApi/'.$text);
+			$obj = json_decode($json);
+			
+				
 			// Get replyToken
 			$replyToken = $event['replyToken'];
 			
@@ -39,7 +45,7 @@ if (!is_null($events['events'])) {
 			];
 			$reply = [
 				'type' => 'text',
-				'text' => 'zzZZ'
+				'text' => $obj[0]->Name
 			];
 			// Build message to reply back
 			if($text == 'Hi'){
@@ -53,7 +59,6 @@ if (!is_null($events['events'])) {
 // 					'type' => 'text',
 					'type' => 'postback',
 					'text' => 'Say "Hi" to me' 
-					
 				];
 			}
 			
@@ -61,7 +66,7 @@ if (!is_null($events['events'])) {
 			$url = 'https://api.line.me/v2/bot/message/reply';
 			$data = [
 				'replyToken' => $replyToken,
-				'messages' => [$messages],
+				'messages' => [$reply],
 			];
 			echo $data;
 			$post = json_encode($data);
@@ -89,11 +94,12 @@ if (!is_null($events['events'])) {
     				'stickerId' => '145'
 			];
 			// Make a POST Request to Messaging API to reply to sender
-			$url = 'https://api.line.me/v2/bot/message/reply';
+			$url = 'https://api.line.me/v2/bot/message/push';
 			$data = [
-				'replyToken' => $replyToken,
-				'messages' => [$messages],
+				'to' => 'Ua7085916d72ba072759cfa5fe05ac3b8',
+		'		messages' => [$messages],
 			];
+			echo 'data: ' . $data . "\n";
 			$post = json_encode($data);
 			$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
 
