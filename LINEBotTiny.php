@@ -188,6 +188,88 @@ class LINEBotTiny
         // }
     }
 
+    // ME
+    public function myPushMessage()
+    {
+        // $header = array(
+        //     "Content-Type: application/json",
+        //     'Authorization: Bearer ' . $this->channelAccessToken,
+        // );
+
+        // $context = stream_context_create(array(
+        //     "http" => array(
+        //         "method" => "POST",
+        //         "header" => implode("\r\n", $header),
+        //         "content" => json_encode($message),
+        //     ),
+        // ));
+        $messages = [
+				'type' => 'sticker',
+				'packageId' => '2',
+    			'stickerId' => '145'
+		];
+        $message = [
+		    'to' => 'U5c95645df3a889a8a270bd48e8a803c5',
+		    'messages' => [$messages],
+	    ];
+
+        $authHeaders = [
+            "Authorization: Bearer mp9W1fQUWXhFHXoIzL7fGy0sW55YeJX3w+2/q/L7zeQa4Ouk/xK1aUypnqo0lFg9hN5GyFN/v/HmDARGeep1o9Pm8kEzQ/h6JA8kxwFAxXUvmF7cEaPm9u6/pMdFWay5FEc35vYlxceDLvixuLzmSwdB04t89/1O/w1cDnyilFU=",
+        ];
+        $method = "POST";
+        $curl = new Curl("https://api.line.me/v2/bot/message/push");
+        $headers = array_merge($authHeaders, ['User-Agent: LINE-BotSDK-PHP/v2'],  ['Content-Type: application/json; charset=utf-8']);
+        $options = [
+            CURLOPT_CUSTOMREQUEST => "POST",
+            CURLOPT_HTTPHEADER => $headers,
+            CURLOPT_HEADER => false,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_BINARYTRANSFER => true,
+            CURLOPT_HEADER => true,
+        ];
+        if ($method === 'POST') {
+            if (empty($message)) {
+                // Rel: https://github.com/line/line-bot-sdk-php/issues/35
+                $options[CURLOPT_HTTPHEADER][] = 'Content-Length: 0';
+            } else {
+                $options[CURLOPT_POSTFIELDS] = json_encode($message);
+            }
+        }
+        $curl->setoptArray($options);
+        $result = $curl->exec();
+        
+
+        if ($curl->errno()) {
+            error_log(json_encode($curl->error()));
+        }
+        $info = $curl->getinfo();
+        $httpStatus = $info['http_code'];
+        $responseHeaderSize = $info['header_size'];
+        $responseHeaderStr = substr($result, 0, $responseHeaderSize);
+        $responseHeaders = [];
+        foreach (explode("\r\n", $responseHeaderStr) as $responseHeader) {
+            $kv = explode(':', $responseHeader, 2);
+            if (count($kv) === 2) {
+                $responseHeaders[$kv[0]] = trim($kv[1]);
+            }
+        }
+        $body = substr($result, $responseHeaderSize);
+        error_log('['.date("F j, Y, g:i a e O").']', 3, "/var/tmp/push-errors.log");
+        error_log(json_encode($httpStatus), 3, "/var/tmp/push-errors.log");
+        error_log("\n ", 3, "/var/tmp/push-errors.log");
+        return $body;
+        // $response = file_get_contents('https://api.line.me/v2/bot/message/push', false, $context);
+        // if (strpos($http_response_header[0], '200') === false) {
+        //     http_response_code(500);
+
+        //    // error_log("Request message push: " . json_encode($message));
+        // }
+        // else{
+        // error_log("Response message push: " . $response);
+        // }
+    }
+    //
+
     private function sign($body)
     {
         $hash = hash_hmac('sha256', $body, $this->channelSecret, true);
