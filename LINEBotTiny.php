@@ -203,15 +203,15 @@ class LINEBotTiny
         //         "content" => json_encode($message),
         //     ),
         // ));
-        $push_msg = [
+        $push_msg = array(
 		'type' => 'sticker',
 		'packageId' => '2',
     		'stickerId' => '145'
-	];
-        $message = [
+	);
+        $message = array(
 		 'to' => ['U5c95645df3a889a8a270bd48e8a803c5', 'Ua7085916d72ba072759cfa5fe05ac3b8'],
 		 'messages' => [$push_msg]
-	];
+	);
 
         $authHeaders = [
             "Authorization: Bearer $this->channelAccessToken",
