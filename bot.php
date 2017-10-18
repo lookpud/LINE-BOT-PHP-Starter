@@ -77,6 +77,7 @@ if (!is_null($events['events'])) {
 			echo $result . "\r\n";
 		}else if($event['type'] == 'postback'){
 			echo 'postback ja';
+			file_put_contents("php://stderr", "postback ja\n");
 		}
 	}
 }
