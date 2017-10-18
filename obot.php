@@ -1,6 +1,6 @@
 <?php
 
-msgPush();
+msgReply();
 
 
 function msgReply(){
@@ -44,8 +44,9 @@ if (!is_null($events['events'])) {
 			// Build message to reply back
 			if($text == 'Hi'){
 				$messages = [
-					'sticker' => $sticker,
-					'reply' => $reply
+					'type' => 'sticker',
+					'packageId' => '1',
+    					'stickerId' => '1'
 				];
 			}else{
 				$messages = [
@@ -74,6 +75,8 @@ if (!is_null($events['events'])) {
 			curl_close($ch);
 
 			echo $result . "\r\n";
+		}else if($event['type'] == 'postback'){
+			echo 'postback ja';
 		}
 	}
 }
