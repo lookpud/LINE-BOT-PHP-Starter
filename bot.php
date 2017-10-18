@@ -78,6 +78,7 @@ if (!is_null($events['events'])) {
 		}else if($event['type'] == 'postback'){
 			echo 'postback ja';
 			file_put_contents("php://stderr", "postback ja\n");
+			echo("<script>console.log('PHP: postback ja');</script>");
 			
 			$replyToken = $event['replyToken'];
 			$messages = [
