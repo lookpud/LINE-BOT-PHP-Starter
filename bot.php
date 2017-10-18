@@ -50,8 +50,11 @@ if (!is_null($events['events'])) {
 				];
 			}else{
 				$messages = [
-					'type' => 'text',
-					'text' => 'Say "Hi" to me' 
+// 					'type' => 'text',
+// 					'text' => 'Say "Hi" to me' 
+					'type' => 'postback',
+					'label' => 'Buy',
+					'data' => 'action=buy&itemid=123
 				];
 			}
 			
@@ -108,7 +111,7 @@ if (!is_null($events['events'])) {
 		}
 	}
 }
-echo "OK2";
+echo "OK1";
 }
 
 
