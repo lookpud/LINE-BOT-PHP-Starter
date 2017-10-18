@@ -19,7 +19,6 @@
 
 $language = "EN";
 
-
 class actions
 {
     public $type;
@@ -27,6 +26,7 @@ class actions
     public $text;
     public $data;
 }
+
 class template 
 {
     public $type;
@@ -41,14 +41,12 @@ class buildingTemplate
     public $columns;
     public function __construct($model, $language)
     {
-
         $this->type ="carousel";
         $this->columns = array();
         $countCompany = 0;
         $actionNumber = 3;
         for($i = 0; $i < count($model->company)/$actionNumber;$i++)
         {
-
             for($j=0; $j < $actionNumber; $j++)
             {
                 if($j==0)
@@ -71,7 +69,6 @@ class buildingTemplate
                     array_push($_columns->actions, $_actions);
                 }
                 else if($j== $actionNumber-1){
-
                     if($j+($i*$actionNumber) < count($model->company))
                     {
                         $_actions = new actions();
@@ -88,9 +85,7 @@ class buildingTemplate
                         $_actions->data = "nothing";
                         array_push($_columns->actions, $_actions);
                         array_push($this->columns, $_columns);    
-                    }
-                    
-
+                    }                   
                 }
                 else{
                      if($j+($i*$actionNumber) < count($model->company))
@@ -107,31 +102,26 @@ class buildingTemplate
                     $_actions->type = "postback";
                     $_actions->label = "...";
                     $_actions->data = "nothing";
-                        array_push($_columns->actions, $_actions);
-                      
-                    }
-                    
-
+                        array_push($_columns->actions, $_actions);                      
+                    }                    
                 }
             }
-
         }
     }
 }
+
 class pushBuildingTemplate 
 {
     public $type;
     public $columns;
     public function __construct($model, $language)
     {
-
         $this->type ="carousel";
         $this->columns = array();
         $countCompany = 0;
         $actionNumber = 3;
         for($i = 0; $i < count($model->company)/$actionNumber;$i++)
         {
-
             for($j=0; $j < $actionNumber; $j++)
             {
                 if($j==0)
@@ -155,7 +145,6 @@ class pushBuildingTemplate
                     array_push($_columns->actions, $_actions);
                 }
                 else if($j== $actionNumber-1){
-
                     if($j+($i*$actionNumber) < count($model->company))
                     {
                         $_actions = new actions();
@@ -172,9 +161,7 @@ class pushBuildingTemplate
                     $_actions->data = "nothing";
                         array_push($_columns->actions, $_actions);
                         array_push($this->columns, $_columns);    
-                    }
-                    
-
+                    }                    
                 }
                 else{
                     if($j+($i*$actionNumber) < count($model->company))
@@ -183,26 +170,18 @@ class pushBuildingTemplate
                         $_actions->type = "postback";
                         $_actions->label = $model->company[$j+($i*$actionNumber)]->Name;
                         $_actions->data = "action=PushBuilding&id=".$model->company[$j+($i*$actionNumber)]->id;
-                        array_push($_columns->actions, $_actions);
-                      
+                        array_push($_columns->actions, $_actions);                      
                     }
                     else{
                         $_actions = new actions();
-                    $_actions->type = "postback";
-                    $_actions->label = "...";
-                    $_actions->data = "nothing";
-                        array_push($_columns->actions, $_actions);
-                      
-                    }
-                    
-
+                        $_actions->type = "postback";
+                        $_actions->label = "...";
+                        $_actions->data = "nothing";
+                        array_push($_columns->actions, $_actions);                     
+                    }                    
                 }
             }
-
-        }
-
-       
-
+        }       
     }
 }
 
@@ -211,8 +190,7 @@ class LanguageTemplate
     public $type;
     public $columns;
     public function __construct($language)
-    {
-        
+    {        
         $this->type ="carousel";
         $this->columns = array();
         $_columns = new cColumns();
@@ -226,8 +204,6 @@ class LanguageTemplate
             $_columns->title = 'What language you want me to talk?';
             $_columns->text = "Language Info:";
         }
-
-        
             $_actions = new actions();
             $_actions->type = "postback";
             $_actions->label = "English ";
@@ -241,10 +217,7 @@ class LanguageTemplate
             $_actions->data = "action=setLanguage&id=TH";
             array_push($_columns->actions, $_actions);
         
-
-
         array_push($this->columns, $_columns);
-
     }
 }
 
@@ -253,17 +226,13 @@ class kia
     public $replyToken;
     public $messages;
     public function __construct($model)
-    {
-        
+    {   
         $this->replyToken = $model;
-
         $this->messages = array();
         $m = new mainTemplate();
         array_push($this->messages, $m);
     }
 }
-
-
 
 class cColumns
 {
@@ -276,6 +245,7 @@ class cColumns
         $this->actions = array();
     }
 }
+
 class ctemplate 
 {
     public $type;
@@ -284,7 +254,6 @@ class ctemplate
     {
         $this->type ="carousel";
         $this->columns = array();
-
         
         if($PriceLimit == -1)
         {
@@ -295,7 +264,8 @@ class ctemplate
                 {
                     $Price = "";
                 }
-                else if($PriceShow == true){
+                else if($PriceShow == true)
+                {
                     $Price = " ฿".$model->menu[$i]->Price;
                 }
                 $_columns = new cColumns();
@@ -307,7 +277,8 @@ class ctemplate
                     $_columns->title = $model->menu[$i]->Title_TH.$Price;
                     $_columns->text = $model->menu[$i]->Description_TH;
                 }
-                else{
+                else
+                {
                     $_columns->title = $model->menu[$i]->Title.$Price;
                     $_columns->text = $model->menu[$i]->Description;
                 }
@@ -317,7 +288,8 @@ class ctemplate
                 {
                     $_actions->label = "YES";
                 }
-                else{
+                else
+                {
                     $_actions->label = "YES";   
                 }
                 $_actions->data = 'action=order&id='.$model->menu[$i]->id;
@@ -331,7 +303,9 @@ class ctemplate
                 array_push($_columns->actions, $_actions);
                 array_push($this->columns, $_columns);    
             }
-        } else {
+        }
+        else 
+        {
             for($i = 0; $i < count($model->menu); $i++)
             {
                 if($model->menu[$i]->Price <= $PriceLimit)
@@ -345,7 +319,8 @@ class ctemplate
                     {
                         $Price = "";
                     }
-                    else if($PriceShow == true){
+                    else if($PriceShow == true)
+                    {
                         $Price = $model->menu[$i]->Price;
                     }
                     if($language == "TH")
@@ -353,7 +328,8 @@ class ctemplate
                         $_columns->title = $model->menu[$i]->Title_TH.$Price;
                         $_columns->text = $model->menu[$i]->Description_TH;
                     }
-                    else{
+                    else
+                    {
                         $_columns->title = $model->menu[$i]->Title.$Price;
                         $_columns->text = $model->menu[$i]->Description;
                     }
@@ -363,7 +339,8 @@ class ctemplate
                     {
                         $_actions->label = "YES";
                     }
-                    else{
+                    else
+                    {
                         $_actions->label = "YES";   
                     }
                     $_actions->data = 'action=order&id='.$model->menu[$i]->id;
@@ -376,15 +353,12 @@ class ctemplate
                     $_actions->data = "nothing";
                     array_push($_columns->actions, $_actions);
                     array_push($this->columns, $_columns);
-                }
-                    
+                }                   
             }
-
-        }
-        
-
+        }        
     }
 }
+
 class cheftemplate 
 {
     public $type;
@@ -393,9 +367,7 @@ class cheftemplate
     {
         $this->type ="carousel";
         $this->columns = array();
-
         
-
             $_columns = new cColumns();
             $_columns->thumbnailImageUrl = "https://go.kinkao.co/image/kevin.jpg";
           
@@ -412,12 +384,10 @@ class cheftemplate
             $_actions->label = "Details";
             $_actions->data = "action=xbuilding";
             array_push($_columns->actions, $_actions);
-            array_push($this->columns, $_columns);    
-       
-        
-
+            array_push($this->columns, $_columns);         
     }
 }
+
 class addresstemplate 
 {
     public $type;
@@ -430,7 +400,7 @@ class addresstemplate
         //$_columns->thumbnailImageUrl = "https://dev.wishbeer.com/image/west.jpg";
         if($language == "EN")
         {
-             $_columns->title = 'Here is your info '.$model->Name;
+            $_columns->title = 'Here is your info '.$model->Name;
             $_columns->text = "".$model->Email."\n".$model->Phone."\n".$model->Company->Name;
             
                 // $_actions = new actions();
@@ -447,13 +417,7 @@ class addresstemplate
                 $_actions->type = "postback";
                 $_actions->label = "Switch Language";
                 $_actions->data = "action=Language";
-                array_push($_columns->actions, $_actions);    
-            
-        
-               
-            
-            
-            
+                array_push($_columns->actions, $_actions);                
             array_push($this->columns, $_columns);
         }
         else
@@ -477,10 +441,9 @@ class addresstemplate
                 array_push($_columns->actions, $_actions);    
             array_push($this->columns, $_columns);
         }
-       
-
     }
 }
+
 class lineRegTemplate 
 {
     public $type;
@@ -509,7 +472,7 @@ class lineRegTemplate
         }
         else
         {
-             $_columns->title = 'Registration';
+            $_columns->title = 'Registration';
             $_columns->text = "Let start getting you into your Company";
             $_actions = new actions();
             $_actions->type = "uri";
@@ -523,10 +486,9 @@ class lineRegTemplate
             array_push($_columns->actions, $_actions);    
             array_push($this->columns, $_columns);
         }
-       
-
     }
 }
+
 class Carousel
 {
     public $type;
@@ -536,8 +498,8 @@ class Carousel
     public function __construct()
     {
         
-
     }
+    
     public function userInfo($model, $language)
     {
         $this->type = 'template';
@@ -546,6 +508,7 @@ class Carousel
         $this->template->type = "carousel";
 
     }
+    
     public function lineReg($model, $language)
     {
         $this->type = 'template';
@@ -554,6 +517,7 @@ class Carousel
         $this->template->type = "carousel";
 
     }
+    
     public function buildingInfo($model, $language)
     {
         $this->type = 'template';
@@ -563,6 +527,7 @@ class Carousel
         $this->template->type = "carousel";
 
     }
+    
     public function PushBuildingInfo($model, $language)
     {
         $this->type = 'template';
@@ -572,6 +537,7 @@ class Carousel
         $this->template->type = "carousel";
 
     }
+    
     public function StartLanguageInfo($model, $language)
     {
         $this->type = 'template';
@@ -581,6 +547,7 @@ class Carousel
         $this->template->type = "carousel";
 
     }
+    
     public function MenuInfo($model, $language, $name, $PriceLimit = -1, $PriceShow = true)
     {
         $this->type = 'template';
@@ -595,6 +562,7 @@ class Carousel
 
         $this->template->type = "carousel";
     }
+    
     public function chefList()
     {
         $this->type= "template";
@@ -604,15 +572,16 @@ class Carousel
         $this->template->type = "carousel";
     }
 }
+
 class kiaCarousel{
     public $replyToken;
     public $messages;
     public $to;
+    
     public function __construct(){
 
     }
-   
-
+    
     public function userInfo($model, $language){
         $this->replyToken = $model->replyToken;
         $this->messages = array();
@@ -620,6 +589,7 @@ class kiaCarousel{
         $m->userInfo($model->user, $language);
         array_push($this->messages, $m);   
     }
+    
     public function registrationLine($model, $language){
         $this->replyToken = $model->replyToken;
         $this->messages = array();
@@ -627,6 +597,7 @@ class kiaCarousel{
         $m->lineReg($model->LUID, $language);
         array_push($this->messages, $m); 
     }
+    
     public function foodMenu($model,$data, $language, $name, $PriceLimit = -1, $PriceShow = false){
         $this->replyToken = $model;
 
@@ -652,6 +623,7 @@ class kiaCarousel{
         $m->BuildingInfo($model->building, $language);
         array_push($this->messages, $m);
     }
+    
     public function pushbuildinglist($model, $language, $LUID){
         $this->to = $LUID;
         $this->messages = array();
@@ -659,6 +631,7 @@ class kiaCarousel{
         $m->BuildingInfo($model->building, $language);
         array_push($this->messages, $m);
     }
+    
     public function PushBuilding($model, $language, $LUID){
         $this->to = $LUID;
         $this->messages = array();
@@ -666,6 +639,7 @@ class kiaCarousel{
         $m->PushBuildingInfo($model->building, $language);
         array_push($this->messages, $m);
     }
+    
     public function PushChef($Token){
         $this->replyToken = $Token;
         $this->messages = array();
@@ -673,6 +647,7 @@ class kiaCarousel{
         $m->chefList();
         array_push($this->messages, $m);
     }
+    
     public function StartLanguage($model, $language){
         $this->replyToken = $model->replyToken;
         $this->messages = array();
@@ -684,7 +659,6 @@ class kiaCarousel{
 
 class kinkaoAPI
 {
-
     public $HostURL;
     public function __construct()
     {
@@ -694,6 +668,7 @@ class kinkaoAPI
         // $this->HostURL = "http://139.59.253.105:9777";
         //$this->HostURL = "http://104.236.212.53:9777";
     }
+    
     public function userList()
     {
         $data = array('LUID' => $LUID);
@@ -712,6 +687,7 @@ class kinkaoAPI
             return $result;
        
     }
+    
     public function CompanyOrderList($data)
     {
         $data = array('company_Name' => $data);
@@ -729,6 +705,7 @@ class kinkaoAPI
        
             return $result;
     }
+    
     public function validateUser($LUID)
     {
         $data = array('LUID' => $LUID);
@@ -748,6 +725,7 @@ class kinkaoAPI
             return $result;
         }
     }
+    
     public function createUser($LUID)
     {
         $data = array('LUID' => $LUID);
@@ -768,6 +746,7 @@ class kinkaoAPI
         }
 
     }
+    
     public function updateProfile($LUID, $DATA, $mode)
     {
         $data = array('LUID' => $LUID, 'Profile_Data'=> $DATA, 'mode' => $mode);
@@ -788,6 +767,7 @@ class kinkaoAPI
         }
 
     }
+    
     public function startupdate($LUID, $DATA)
     {
         $data = array('LUID' => $LUID);
@@ -808,6 +788,7 @@ class kinkaoAPI
         }
 
     }
+    
     public function getMenu()
     {
         $data = array('LUID' => 0);
@@ -829,6 +810,7 @@ class kinkaoAPI
         }
 
     }
+    
     public function getRestaurantMenu()
     {
         $data = array('LUID' => 0);
@@ -849,6 +831,7 @@ class kinkaoAPI
         }
 
     }
+    
     public function getRestaurantMenu2()
     {
         $data = array('LUID' => 0);
@@ -869,6 +852,7 @@ class kinkaoAPI
         }
 
     }
+    
     public function getBuilding()
     {
         $data = "";
@@ -889,6 +873,7 @@ class kinkaoAPI
         }
 
     }
+    
     public function updateProfileCompany($LUID, $DATA)
     {
         $data = array('LUID' => $LUID, 'Profile_Data'=> $DATA);
@@ -909,6 +894,7 @@ class kinkaoAPI
         }
 
     }
+    
     public function RateFood($LUID, $ORDERID, $FOODID, $RATE)
     {
         $data = array('LUID' => $LUID, 'ORDERID'=> $ORDERID, 'FOODID'=>$FOODID, 'RATE'=>$RATE);
@@ -952,6 +938,7 @@ class kinkaoAPI
         }
 
     }
+    
     public function createOrder($LUID, $Data)
     {
         $data = array('LUID' => $LUID, 'DATA'=> $Data);
@@ -974,7 +961,6 @@ class kinkaoAPI
 }
 
 class postBackHandler{
-    
     public function __construct(){
 
     }
@@ -1197,10 +1183,6 @@ foreach ($client->parseEvents() as $event) {
                             $client->pushMessage($test);
                         }
                     }
-                  
-                    
-
-                   
                     // $nonKinkaoMenu = $KinkaoAPI->getRestaurantMenu();
                     // $c = new kiaCarousel();
 
