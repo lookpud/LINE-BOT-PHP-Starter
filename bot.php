@@ -51,10 +51,9 @@ if (!is_null($events['events'])) {
 			}else{
 				$messages = [
 // 					'type' => 'text',
-// 					'text' => 'Say "Hi" to me' 
 					'type' => 'postback',
-					'label' => 'Buy',
-					'data' => 'action=buy&itemid=123
+					'text' => 'Say "Hi" to me' 
+					
 				];
 			}
 			
