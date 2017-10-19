@@ -15,76 +15,6 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-// ME
-$test = new msgPush();
-class msgPush{
-public function __construct()
-    {
-
-	$access_token = 'mp9W1fQUWXhFHXoIzL7fGy0sW55YeJX3w+2/q/L7zeQa4Ouk/xK1aUypnqo0lFg9hN5GyFN/v/HmDARGeep1o9Pm8kEzQ/h6JA8kxwFAxXUvmF7cEaPm9u6/pMdFWay5FEc35vYlxceDLvixuLzmSwdB04t89/1O/w1cDnyilFU=';
-	
-	// get data from API
-	ini_set("allow_url_fopen", 1);
-	$json = file_get_contents('http://139.59.247.234:1337/myApi/17');
-	$obj = json_decode($json);
-	echo $obj[0]->Title . "\n";
-// 	foreach($json as $key => $value){
-//   		echo 'value' . $value . '<br />';
-// 	}
-	
-	// Build message to reply back
-	$arr = [];
-	$sticker = [
-		'type' => 'sticker',
-		'packageId' => '1',
-    		'stickerId' => '1'
-	];
-	$sticker2 = [
-		'type' => 'sticker',
-		'packageId' => '2',
-    		'stickerId' => '145'
-	];
-	$messages = [
-		'type' => 'text',
-		'text' => 'Yo!'//$obj[0]->Title
-	];
-	// PGMJL
-	$arr[] = $messages;
-	$arr[] = $sticker2;
-	$arr[] = $sticker;
-	foreach($arr as $key => $value){
-  		echo 'value' . $value . '<br />';
-	}
-// 	$messages = [
-// 		'sticker' => $sticker,
-// 		'reply' => $reply
-// 	];
-	echo 'msg: ' . [$messages] . "\n";
-	print 'msg: ' . [$messages] . "\n";
-			
-	// Make a POST Request to Messaging API to reply to sender
-	$url = 'https://api.line.me/v2/bot/message/push';
-	$data = [
-		'to' => 'U5c95645df3a889a8a270bd48e8a803c5',
-		'messages' => $arr,
-	];
-	echo 'data: ' . $data . "\n";
-	$post = json_encode($data);
-	$headers = array('Content-Type: application/json', 'Authorization: Bearer ' . $access_token);
-	$ch = curl_init($url);
-	curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
-	curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-	curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
-	curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-	curl_setopt($ch, CURLOPT_FOLLOWLOCATION, 1);
-	$result = curl_exec($ch);
-	curl_close($ch);
-	echo 'result: ' . $result . "\r\n";
-	echo "OK2";
-}
-}
-}
-//
 
 $language = "EN";
 
@@ -567,12 +497,18 @@ class lineRegTemplate
             $_actions = new actions();
             $_actions->type = "uri";
             $_actions->label = "Register";
-            $_actions->uri = "http://www.kinkao.co/registration/line/en/".$LUID;
+//             $_actions->uri = "http://www.kinkao.co/registration/line/en/".$LUID;
+	    // ME
+	    $_actions->uri = "http://139.59.247.234/TestBot/RegisterView/".$LUID;
+            //
             array_push($_columns->actions, $_actions);
             $_actions = new actions();
             $_actions->type = "uri";
             $_actions->label = "สมัคร";
-            $_actions->uri = "http://www.kinkao.co/registration/line/th/".$LUID;
+//             $_actions->uri = "http://www.kinkao.co/registration/line/th/".$LUID;
+	    // ME
+	    $_actions->uri = "http://139.59.247.234/TestBot/RegisterView/".$LUID;
+            //
             array_push($_columns->actions, $_actions);    
             array_push($this->columns, $_columns);
         }
@@ -583,12 +519,18 @@ class lineRegTemplate
             $_actions = new actions();
             $_actions->type = "uri";
             $_actions->label = "Register";
-            $_actions->uri = "http://www.kinkao.co/registration/line/en/".$LUID;
+//             $_actions->uri = "http://www.kinkao.co/registration/line/en/".$LUID;
+	    // ME
+	    $_actions->uri = "http://139.59.247.234/TestBot/RegisterView/".$LUID;
+            //
             array_push($_columns->actions, $_actions);
             $_actions = new actions();
             $_actions->type = "uri";
             $_actions->label = "สมัคร";
-            $_actions->uri = "http://www.kinkao.co/registration/line/th/".$LUID;
+//             $_actions->uri = "http://www.kinkao.co/registration/line/th/".$LUID;
+	    // ME
+	    $_actions->uri = "http://139.59.247.234/TestBot/RegisterView/".$LUID;
+            //
             array_push($_columns->actions, $_actions);    
             array_push($this->columns, $_columns);
         }
@@ -1076,7 +1018,7 @@ $channelSecret = '5bf3f6d2e27576b55d4282e89ad66f97';
 // $channelAccessToken = 'JBD1wMwPpZKIyVFgSnXO2CfsrcmbvCSHNQTpvgCiu98CfG07+LlJM5DwzP1o6f5wGTLrybj7VgLe8Dcf0bnqRA5ZbgMkga4+LHPeY06lOZLnuPOR+Uz/HNzdcvkfSfyeqajI4MMNx6GawUXTy3ZcnAdB04t89/1O/w1cDnyilFU=';
 // $channelSecret = '128120ac4fe583508e4e52e64a8d698c';
 $client = new LINEBotTiny($channelAccessToken, $channelSecret);
-$client->myPushMessage();
+
 foreach ($client->parseEvents() as $event) {
 
     $KinkaoAPI = new kinkaoAPI();
