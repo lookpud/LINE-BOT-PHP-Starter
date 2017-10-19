@@ -188,60 +188,6 @@ class LINEBotTiny
         // }
     }
 
-    // ME
-    public function myPushMessage()
-    {
-        // $header = array(
-        //     "Content-Type: application/json",
-        //     'Authorization: Bearer ' . $this->channelAccessToken,
-        // );
-
-        // $context = stream_context_create(array(
-        //     "http" => array(
-        //         "method" => "POST",
-        //         "header" => implode("\r\n", $header),
-        //         "content" => json_encode($message),
-        //     ),
-        // ));
-        $push_msg = array(
-		'type' => 'sticker',
-		'packageId' => '2',
-    		'stickerId' => '145'
-	);
-        $message = array(
-		 'to' => ['U5c95645df3a889a8a270bd48e8a803c5', 'Ua7085916d72ba072759cfa5fe05ac3b8'],
-		 'messages' => [$push_msg]
-	);
-
-        $authHeaders = [
-            "Authorization: Bearer $this->channelAccessToken",
-        ];
-        $method = "POST";
-        $curl = new Curl("https://api.line.me/v2/bot/message/push");
-        $headers = array_merge($authHeaders, ['User-Agent: LINE-BotSDK-PHP/v2'],  ['Content-Type: application/json; charset=utf-8']);
-        $options = [
-            CURLOPT_CUSTOMREQUEST => "POST",
-            CURLOPT_HTTPHEADER => $headers,
-            CURLOPT_HEADER => false,
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_BINARYTRANSFER => true,
-            CURLOPT_HEADER => true,
-        ];
-        if ($method === 'POST') {
-            if (empty($message)) {
-                // Rel: https://github.com/line/line-bot-sdk-php/issues/35
-                $options[CURLOPT_HTTPHEADER][] = 'Content-Length: 0';
-            } else {
-                $options[CURLOPT_POSTFIELDS] = json_encode($message);
-            }
-        }
-        $curl->setoptArray($options);
-        $result = $curl->exec();
-        return $result;
-
-    }
-    //
-
     private function sign($body)
     {
         $hash = hash_hmac('sha256', $body, $this->channelSecret, true);
