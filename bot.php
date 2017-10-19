@@ -499,7 +499,7 @@ class lineRegTemplate
             $_actions->label = "Register";
 //             $_actions->uri = "http://www.kinkao.co/registration/line/en/".$LUID;
 	    // ME
-	    $_actions->uri = "http://139.59.247.234/TestBot/RegisterView/".$LUID;
+	    $_actions->uri = "http://139.59.247.234:1337/TestBot/RegisterView/".$LUID;
             //
             array_push($_columns->actions, $_actions);
             $_actions = new actions();
@@ -507,7 +507,7 @@ class lineRegTemplate
             $_actions->label = "สมัคร";
 //             $_actions->uri = "http://www.kinkao.co/registration/line/th/".$LUID;
 	    // ME
-	    $_actions->uri = "http://139.59.247.234/TestBot/RegisterView/".$LUID;
+	    $_actions->uri = "http://139.59.247.234:1337/TestBot/RegisterView/".$LUID;
             //
             array_push($_columns->actions, $_actions);    
             array_push($this->columns, $_columns);
@@ -521,7 +521,7 @@ class lineRegTemplate
             $_actions->label = "Register";
 //             $_actions->uri = "http://www.kinkao.co/registration/line/en/".$LUID;
 	    // ME
-	    $_actions->uri = "http://139.59.247.234/TestBot/RegisterView/".$LUID;
+	    $_actions->uri = "http://139.59.247.234:1337/TestBot/RegisterView/".$LUID;
             //
             array_push($_columns->actions, $_actions);
             $_actions = new actions();
@@ -529,7 +529,7 @@ class lineRegTemplate
             $_actions->label = "สมัคร";
 //             $_actions->uri = "http://www.kinkao.co/registration/line/th/".$LUID;
 	    // ME
-	    $_actions->uri = "http://139.59.247.234/TestBot/RegisterView/".$LUID;
+	    $_actions->uri = "http://139.59.247.234:1337/TestBot/RegisterView/".$LUID;
             //
             array_push($_columns->actions, $_actions);    
             array_push($this->columns, $_columns);
