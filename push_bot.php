@@ -37,9 +37,8 @@ function msgPush(){
 // 	for($i = 0; $i < count($arr); $i++){
 	$url = 'https://api.line.me/v2/bot/message/push';
 	$data = [
-		'to' => 'Ucf389be8a4706d678931f7efb84d18cb',
-		'messages' = ['type' => 'text',
-		'text' => 'Ha loooo!'],
+		'to' => 'Ua7085916d72ba072759cfa5fe05ac3b8',
+		'messages' => [$messages],
 	];
 	echo 'data: ' . $data . "\n";
 	$post = json_encode($data);
