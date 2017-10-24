@@ -18,16 +18,16 @@ function msgPush(){
 	// PGMJL
 // 	$arr[] = $obj->LUID[0]->LUID;
 // 	$arr[] = $obj->LUID[1]->LUID;
-	foreach($obj->LUID->LUID as $key => $value){
+	foreach($obj as $key => $value){
   		echo 'value' . $value . '<br />';
 		$arr[] = $value;
 	}
-// 	$messages = [
-// 		'sticker' => $sticker,
-// 		'reply' => $reply
-// 	];
-	echo 'msg: ' . [$messages] . "\n";
-	print 'msg: ' . [$messages] . "\n";
+	function RecursiveWrite($obj) {
+    		foreach ($obj as $vals) {
+        		echo $vals['LUID'] . "\n";
+        		RecursiveWrite($vals['LUID']);
+    		}
+	}
 			
 	// Make a POST Request to Messaging API to reply to sender
 // 	$url = 'https://api.line.me/v2/bot/message/push';
