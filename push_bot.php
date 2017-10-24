@@ -25,9 +25,12 @@ function msgPush(){
 	foreach($obj->LUID as $array){
     		foreach($array as $key=>$value){
       			echo "Key: " .$key. "/ Value: " .$value. "<br />";
+			$arr[] = $value;
     		}
 	}
-			
+	foreach($arr as $key => $value){
+  		echo 'value ' . $value . '<br />';
+	}		
 	// Make a POST Request to Messaging API to reply to sender
 // 	$url = 'https://api.line.me/v2/bot/message/push';
 // 	$data = [
