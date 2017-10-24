@@ -32,7 +32,7 @@ function msgPush(){
 	foreach($arr as $key => $value){
   		echo 'key ' . $key . '<br />';
 	}
-	echo 'key1 '. $arr[1];
+	echo 'key1 '. count($arr);
 	// Make a POST Request to Messaging API to reply to sender
 	for($i = 0; $i < count($arr); $i++){
 	$url = 'https://api.line.me/v2/bot/message/push';
