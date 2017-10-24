@@ -37,7 +37,7 @@ function msgPush(){
 // 	for($i = 0; $i < count($arr); $i++){
 	$url = 'https://api.line.me/v2/bot/message/push';
 	$data = [
-		'to' => $arr[1],
+		'to' => '$arr[1]',
 		'messages' => [$messages],
 	];
 	echo 'data: ' . $data . "\n";
