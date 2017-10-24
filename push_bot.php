@@ -7,7 +7,7 @@ function msgPush(){
 	ini_set("allow_url_fopen", 1);
 	$json = file_get_contents('http://139.59.247.234:1337/TestBot/FindUser/findUser');
 	$obj = json_decode($json);
-	echo $obj . "\n";
+	echo $obj;
 // 	foreach($json as $key => $value){
 //   		echo 'value' . $value . '<br />';
 // 	}
