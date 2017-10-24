@@ -38,7 +38,7 @@ function msgPush(){
 	$url = 'https://api.line.me/v2/bot/message/push';
 	$data = [
 		'to' => 'Ucf389be8a4706d678931f7efb84d18cb',
-		'messages' => ['type' => 'text',
+		'messages' = ['type' => 'text',
 		'text' => 'Ha loooo!'],
 	];
 	echo 'data: ' . $data . "\n";
