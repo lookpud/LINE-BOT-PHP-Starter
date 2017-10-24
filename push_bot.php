@@ -34,10 +34,10 @@ function msgPush(){
 	}
 	echo 'key1 '. count($arr);
 	// Make a POST Request to Messaging API to reply to sender
-// 	for($i = 0; $i < count($arr); $i++){
+	for($i = 0; $i < count($arr); $i++){
 	$url = 'https://api.line.me/v2/bot/message/push';
 	$data = [
-		'to' => '$arr[1]',
+		'to' => $arr[$i],
 		'messages' => [$messages],
 	];
 	echo 'data: ' . $data . "\n";
@@ -52,6 +52,6 @@ function msgPush(){
 	$result = curl_exec($ch);
 	curl_close($ch);
 	echo 'result: ' . $result . "\r\n";
-// 	}
+	}
 	echo "OK2";
 }
