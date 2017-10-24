@@ -19,11 +19,9 @@ function msgPush(){
 // 	$arr[] = $obj->LUID[0]->LUID;
 // 	$arr[] = $obj->LUID[1]->LUID;
 	echo 'obj '. $obj->LUID;
-	foreach($obj as $key => $value){
-  		echo 'value' . $value[LUID] . '<br />';
-		foreach($value as $key => $v){
-			echo 'v ' . $v . '<br />';
-		}
+	foreach($obj->LUID as $key => $value){
+  		echo 'value ' . $value . '<br />';
+		
 		$arr[] = $value;
 	}
 	function RecursiveWrite($obj) {
