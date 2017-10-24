@@ -16,10 +16,11 @@ function msgPush(){
 	// Build message to reply back
 	$arr = [];
 	// PGMJL
-	$arr[] = $obj->LUID[0]->LUID;
-	$arr[] = $obj->LUID[1]->LUID;
-	foreach($arr as $key => $value){
+// 	$arr[] = $obj->LUID[0]->LUID;
+// 	$arr[] = $obj->LUID[1]->LUID;
+	foreach($obj->LUID as $key => $value){
   		echo 'value' . $value . '<br />';
+		$arr[] = $value;
 	}
 // 	$messages = [
 // 		'sticker' => $sticker,
