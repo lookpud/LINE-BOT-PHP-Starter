@@ -18,18 +18,13 @@ function msgPush(){
 	// PGMJL
 // 	$arr[] = $obj->LUID[0]->LUID;
 // 	$arr[] = $obj->LUID[1]->LUID;
-	$luidArr = [];
-	$luidArr[] = $obj->LUID;
-	echo $luidArr[];
-	foreach($luidArr as $key => $value){
-  		echo 'value ' . $value . '<br />';
-		
-		$arr[] = $value;
-	}
-	function RecursiveWrite($obj) {
-    		foreach ($obj as $vals) {
-        		echo $vals['LUID'] . "\n";
-        		RecursiveWrite($vals['LUID']);
+// 	$luidArr = [];
+// 	$luidArr[] = $obj->LUID;
+// 	echo $luidArr[];
+	
+	foreach($obj as $array){
+    		foreach($array as $key=>$value){
+      			echo "Key: $key / Value: $value<br />";
     		}
 	}
 			
