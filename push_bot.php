@@ -19,7 +19,7 @@ function msgPush(){
 // 	$arr[] = $obj->LUID[0]->LUID;
 // 	$arr[] = $obj->LUID[1]->LUID;
 	$luidArr[] = $obj->LUID;
-	foreach($luidArr as $key => $value){
+	foreach($luidArr[] as $key => $value){
   		echo 'value ' . $value . '<br />';
 		
 		$arr[] = $value;
