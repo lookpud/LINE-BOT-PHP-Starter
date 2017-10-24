@@ -20,18 +20,18 @@ function msgPush(){
 		'text' => 'Ha loooo!'//$obj[0]->Title
 	];
 	// PGMJL
-	$arr[] = $obj->LUID[0]->LUID;
-	$arr[] = $obj->LUID[1]->LUID;
+// 	$arr[] = $obj->LUID[0]->LUID;
+// 	$arr[] = $obj->LUID[1]->LUID;
 	
-// 	foreach($obj->LUID as $array){
-//     		foreach($array as $key=>$value){
-//       			echo "Key: " .$key. "/ Value: " .$value. "<br />";
-// 			$arr[] = $value;
-//     		}
-// 	}
-// 	foreach($arr as $key => $value){
-//   		echo 'value ' . $value . '<br />';
-// 	}		
+	foreach($obj->LUID as $array){
+    		foreach($array as $key=>$value){
+      			echo "Key: " .$key. "/ Value: " .$value. "<br />";
+			$arr[] = $value;
+    		}
+	}
+	foreach($arr as $key => $value){
+  		echo 'key ' . $key . '<br />';
+	}		
 	// Make a POST Request to Messaging API to reply to sender
 	$url = 'https://api.line.me/v2/bot/message/push';
 	$data = [
