@@ -22,9 +22,9 @@ function msgPush(){
 // 	$luidArr[] = $obj->LUID;
 // 	echo $luidArr[];
 	
-	foreach($obj as $array){
+	foreach($obj->LUID as $array){
     		foreach($array as $key=>$value){
-      			echo "Key: $key / Value: $value<br />";
+      			echo "Key: " .$key. "/ Value: " .$value. "<br />";
     		}
 	}
 			
