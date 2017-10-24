@@ -18,9 +18,10 @@ function msgPush(){
 	// PGMJL
 // 	$arr[] = $obj->LUID[0]->LUID;
 // 	$arr[] = $obj->LUID[1]->LUID;
+	$luidArr = [];
 	$luidArr[] = $obj->LUID;
-	echo $luidArr[0];
-	foreach($luidArr[] as $key => $value){
+	echo $luidArr[];
+	foreach($luidArr as $key => $value){
   		echo 'value ' . $value . '<br />';
 		
 		$arr[] = $value;
