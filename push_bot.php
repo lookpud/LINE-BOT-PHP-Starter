@@ -15,24 +15,9 @@ function msgPush(){
 	
 	// Build message to reply back
 	$arr = [];
-	$sticker = [
-		'type' => 'sticker',
-		'packageId' => '1',
-    		'stickerId' => '1'
-	];
-	$sticker2 = [
-		'type' => 'sticker',
-		'packageId' => '2',
-    		'stickerId' => '520'
-	];
-	$messages = [
-		'type' => 'text',
-		'text' => 'Yo!'//$obj[0]->Title
-	];
 	// PGMJL
-	$arr[] = $messages;
-	$arr[] = $sticker2;
-	$arr[] = $sticker;
+	$arr[] = $obj->LUID[0]->LUID;
+	$arr[] = $obj->LUID[1]->LUID;
 	foreach($arr as $key => $value){
   		echo 'value' . $value . '<br />';
 	}
