@@ -1,5 +1,30 @@
 <?php
-msgPush();
+require_once('./LINEBotTiny.php');
+require_once('./echo_bot.php');
+
+re_regis();
+
+function re_regis(){
+	$language = 'EN';
+	// get data from API
+	ini_set("allow_url_fopen", 1);
+	$json = file_get_contents('http://139.59.247.234:1337/TestBot/FindUser/findUser');
+	$obj = json_decode($json);
+	echo $obj[0]->LUID[0]->LUID . "\n";
+		$channelAccessToken = 'mp9W1fQUWXhFHXoIzL7fGy0sW55YeJX3w+2/q/L7zeQa4Ouk/xK1aUypnqo0lFg9hN5GyFN/v/HmDARGeep1o9Pm8kEzQ/h6JA8kxwFAxXUvmF7cEaPm9u6/pMdFWay5FEc35vYlxceDLvixuLzmSwdB04t89/1O/w1cDnyilFU=';
+		$channelSecret = '5bf3f6d2e27576b55d4282e89ad66f97';
+		$client = new LINEBotTiny($channelAccessToken, $channelSecret);
+
+		$LUID = $obj[0]->LUID[0]->LUID;
+		$KinkaoAPI = new kinkaoAPI();
+		$userKinkao = $KinkaoAPI->validateUser($LUID);
+		$model = (object) ['luid'=> $LUID, 'user' => $userKinkao->user];
+                        
+    	$kinkao = new kiaCarousel();
+    	$kinkao->registrationLine($model, $language);
+        $client->pushMessage($kinkao);
+} 
+
 function msgPush(){
 	$access_token = 'mp9W1fQUWXhFHXoIzL7fGy0sW55YeJX3w+2/q/L7zeQa4Ouk/xK1aUypnqo0lFg9hN5GyFN/v/HmDARGeep1o9Pm8kEzQ/h6JA8kxwFAxXUvmF7cEaPm9u6/pMdFWay5FEc35vYlxceDLvixuLzmSwdB04t89/1O/w1cDnyilFU=';
 	
@@ -7,38 +32,46 @@ function msgPush(){
 	ini_set("allow_url_fopen", 1);
 	$json = file_get_contents('http://139.59.247.234:1337/TestBot/FindUser/findUser');
 	$obj = json_decode($json);
-	echo $obj->LUID[0]->LUID;
-	echo 'ok';
+	echo $obj[0]->LUID[0]->LUID . "\n";
 // 	foreach($json as $key => $value){
 //   		echo 'value' . $value . '<br />';
 // 	}
 	
 	// Build message to reply back
 	$arr = [];
+	$sticker = [
+		'type' => 'sticker',
+		'packageId' => '1',
+    		'stickerId' => '1'
+	];
+	$sticker2 = [
+		'type' => 'sticker',
+		'packageId' => '2',
+    		'stickerId' => '520'
+	];
 	$messages = [
 		'type' => 'text',
-		'text' => 'Ha loooo!'//$obj[0]->Title
+		'text' => 'Yo!'//$obj[0]->Title
 	];
 	// PGMJL
-// 	$arr[] = $obj->LUID[0]->LUID;
-// 	$arr[] = $obj->LUID[1]->LUID;
-	
-	foreach($obj->LUID as $array){
-    		foreach($array as $key=>$value){
-      			echo "Key: " .$key. "/ Value: " .$value. "<br />";
-			$arr[] = $value;
-    		}
-	}
+	$arr[] = $messages;
+	$arr[] = $sticker2;
+	$arr[] = $sticker;
 	foreach($arr as $key => $value){
-  		echo 'key ' . $key . '<br />';
+  		echo 'value' . $value . '<br />';
 	}
-	echo 'key1 '. count($arr);
+// 	$messages = [
+// 		'sticker' => $sticker,
+// 		'reply' => $reply
+// 	];
+	echo 'msg: ' . [$messages] . "\n";
+	print 'msg: ' . [$messages] . "\n";
+			
 	// Make a POST Request to Messaging API to reply to sender
-// 	for($i = 0; $i < count($arr); $i++){
 	$url = 'https://api.line.me/v2/bot/message/push';
 	$data = [
-		'to' => 'Ua7085916d72ba072759cfa5fe05ac3b8',
-		'messages' => [$messages],
+		'to' => '',
+		'messages' => $arr,
 	];
 	echo 'data: ' . $data . "\n";
 	$post = json_encode($data);
@@ -52,6 +85,5 @@ function msgPush(){
 	$result = curl_exec($ch);
 	curl_close($ch);
 	echo 'result: ' . $result . "\r\n";
-// 	}
 	echo "OK2";
 }
